@@ -51,6 +51,11 @@
       "url": "https://ae.nflximg.net/assets/prod/94b3e9ce-a957-427e-bbf9-e11566afd288/20170725/bbfcd816-af58-4593-846a-f3502942aaaa.mp4",
       "videoType": "SUPERCUT"
     },
+    "bool.Toggle_Ribbon": {
+      "type": "bool",
+      "id": "Toggle_Ribbon",
+      "value": false
+    },
     "bool.Toggle_Supercut": {
       "type": "bool",
       "id": "Toggle_Supercut",
