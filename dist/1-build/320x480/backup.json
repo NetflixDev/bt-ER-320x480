@@ -45,12 +45,6 @@
       "id": "Ratings_Bug_20x20",
       "url": ""
     },
-    "video.Supercut": {
-      "type": "video",
-      "id": "Supercut",
-      "url": "https://ae.nflximg.net/assets/prod/94b3e9ce-a957-427e-bbf9-e11566afd288/20170725/bbfcd816-af58-4593-846a-f3502942aaaa.mp4",
-      "videoType": "SUPERCUT"
-    },
     "bool.Toggle_Ribbon": {
       "type": "bool",
       "id": "Toggle_Ribbon",
@@ -60,6 +54,12 @@
       "type": "bool",
       "id": "Toggle_Supercut",
       "value": false
+    },
+    "video.Supercut": {
+      "type": "video",
+      "id": "Supercut",
+      "url": "https://ae.nflximg.net/assets/prod/94b3e9ce-a957-427e-bbf9-e11566afd288/20170725/bbfcd816-af58-4593-846a-f3502942aaaa.mp4",
+      "videoType": "SUPERCUT"
     }
   },
   "assetGroups": [],
