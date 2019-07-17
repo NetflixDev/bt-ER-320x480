@@ -109,11 +109,6 @@ export default function verticalOneLine({
     align: brandingLockupAlign
   });
 
-  // ensure iris renderer is at top of endFrame
-  if (T.iris) {
-    T.appendChild(T.iris.canvas);
-  }
-
   // ratings bug
   if (adData.hasRatings) {
     Align.set(T.ratingsBug, {
@@ -128,5 +123,10 @@ export default function verticalOneLine({
     });
   } else {
     T.removeChild(T.ratingsBug);
+  }
+
+  // ensure iris renderer is at top of endFrame
+  if (T.iris) {
+    T.appendChild(T.iris.canvas);
   }
 }
