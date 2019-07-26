@@ -74,7 +74,7 @@ export function Intro(arg) {
   T.appendChild(T.netflixLogo);
 
   T.postMarkupStyling = function() {
-    Styles.setCss(View.intro.netflixLogo, { opacity: 0 });
+    TweenLite.set(View.intro.netflixLogo, { opacity: 0 });
     Align.set(View.intro.netflixLogo, {
       x: {
         type: Align.LEFT,
@@ -99,7 +99,13 @@ export function EndFrame(arg) {
       height: "inherit"
     }
   };
-  const T = new UIComponent(ObjectUtils.defaults(arg, base, true));
+
+  const _uiObj = ObjectUtils.defaults(arg, base, true);
+
+  const T = new UIComponent(_uiObj);
+  T.subLayer = new UIComponent(_uiObj);
+
+  T.subLayer.appendChild(T);
 
   baseInit(T, {
     logoWidth: 112,
