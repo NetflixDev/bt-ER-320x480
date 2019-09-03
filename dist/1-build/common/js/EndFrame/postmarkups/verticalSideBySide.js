@@ -17,8 +17,8 @@ import { titleTreatmentLayout, sideBySideBrandingLockup } from "./shared.js";
 
 export default function sideBySidePostMarkup({
   ctaLogoOffset = 13,
-  tuneInFontSize = 16,
-  tuneInLockupOffset = 15,
+  headlineFontSize = 16,
+  headlineLockupOffset = 15,
   brandingLockupAlign = {
     x: Align.CENTER,
     y: {
@@ -44,11 +44,11 @@ export default function sideBySidePostMarkup({
   });
 
   // side-by-side branding
-  // encompassing CTA, logo, and tune-in/FTM
+  // encompassing CTA, logo, and headline
   sideBySideBrandingLockup(T, {
     ctaLogoOffset,
-    tuneInFontSize,
-    tuneInLockupOffset,
+    headlineFontSize,
+    headlineLockupOffset,
     brandingLockupAlign
   });
 

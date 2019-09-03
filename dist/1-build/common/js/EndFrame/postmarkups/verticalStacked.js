@@ -16,7 +16,7 @@ import { ObjectUtils } from "ad-utils";
 import { titleTreatmentLayout, stackedBrandingLockup } from "./shared.js";
 
 export default function verticalStacked({
-  tuneInFontSize = 16,
+  headlineFontSize = 16,
   // offset between elements in branding lockup
   brandingLockupOffset = 11,
   // describe how to align branding lockup elems against each other
@@ -48,12 +48,12 @@ export default function verticalStacked({
     }
   });
 
-  // encompasses CTA, logo and tune-in/FTM if available
+  // encompasses CTA, logo and headline if available
   stackedBrandingLockup(T, {
     brandingLockupOffset,
     brandingLockupElemXAlign,
     brandingLockupAlign,
-    tuneInFontSize
+    headlineFontSize
   });
 
   // ratings bug

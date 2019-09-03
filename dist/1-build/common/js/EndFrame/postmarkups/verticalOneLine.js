@@ -18,7 +18,7 @@ import { titleTreatmentLayout } from "./shared.js";
 
 export default function verticalOneLine({
   brandingLockupOffset = 11,
-  tuneInFontSize = 14,
+  headlineFontSize = 14,
   brandingLockupAlign = {
     x: Align.CENTER,
     y: {
@@ -43,34 +43,16 @@ export default function verticalOneLine({
     }
   });
 
-  // possible text element that would appear between logo and CTA
-  let textElem;
-  if (adData.hasFTM) {
-    textElem = T.ftm;
-    // free trial messaging
-    Styles.setCss(T.ftm, {
-      color: "#fff",
-      fontSize: tuneInFontSize - 2,
-      letterSpacing: 1,
-      textAlign: "center"
-    });
-    T.removeChild(T.tuneIn);
-  }
+  // possible headline that would appear between logo and CTA
+  Styles.setCss(T.headline, {
+    color: "#fff",
+    fontSize: headlineFontSize - 2,
+    letterSpacing: 1,
+    textAlign: "center"
+  });
 
-  if (adData.hasTuneIn) {
-    textElem = T.tuneIn;
-    // tune-in
-    Styles.setCss(T.tuneIn, {
-      color: "#fff",
-      fontSize: tuneInFontSize,
-      letterSpacing: 1,
-      textAlign: "center"
-    });
-    T.removeChild(T.ftm);
-  }
-
-  if (textElem) {
-    Align.set(textElem, {
+  if (T.headline) {
+    Align.set(T.headline, {
       against: T.netflixLogo,
       x: {
         type: Align.RIGHT,
@@ -84,7 +66,7 @@ export default function verticalOneLine({
   // cta
   T.cta.resize();
   Align.set(T.cta, {
-    against: textElem || T.netflixLogo,
+    against: T.headline || T.netflixLogo,
     x: {
       type: Align.RIGHT,
       outer: true,
@@ -95,12 +77,8 @@ export default function verticalOneLine({
 
   const children = [T.netflixLogo, T.cta];
 
-  if (adData.hasFTM) {
-    children.push(T.ftm);
-  }
-
-  if (adData.hasTuneIn) {
-    children.push(T.tuneIn);
+  if (adData.headlineText) {
+    children.push(T.headline);
   }
 
   T.brandingLockup = new UIGroup({

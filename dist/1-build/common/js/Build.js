@@ -117,8 +117,8 @@ export function EndFrame(arg) {
   T.postMarkupStyling = function() {
     verticalSideBySide({
       ctaLogoOffset: 20,
-      tuneInFontSize: 16,
-      tuneInLockupOffset: 16,
+      headlineFontSize: 16,
+      headlineLockupOffset: 16,
       brandingLockupAlign: {
         x: Align.CENTER,
         y: {
