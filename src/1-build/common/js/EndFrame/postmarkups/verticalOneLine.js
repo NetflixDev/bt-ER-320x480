@@ -43,6 +43,10 @@ export default function verticalOneLine({
     }
   });
 
+  // switch typical CTA-logo orientation for RTL treatments
+  const leftEl = adData.isRTL ? T.cta : T.netflixLogo;
+  const rightEl = adData.isRTL ? T.netflixLogo : T.cta;
+
   // possible headline that would appear between logo and CTA
   Styles.setCss(T.headline, {
     color: "#fff",
@@ -53,7 +57,7 @@ export default function verticalOneLine({
 
   if (T.headline) {
     Align.set(T.headline, {
-      against: T.netflixLogo,
+      against: leftEl,
       x: {
         type: Align.RIGHT,
         outer: true,
@@ -65,8 +69,9 @@ export default function verticalOneLine({
 
   // cta
   T.cta.resize();
-  Align.set(T.cta, {
-    against: T.headline || T.netflixLogo,
+
+  Align.set(rightEl, {
+    against: T.headline || leftEl,
     x: {
       type: Align.RIGHT,
       outer: true,
@@ -75,7 +80,7 @@ export default function verticalOneLine({
     y: Align.CENTER
   });
 
-  const children = [T.netflixLogo, T.cta];
+  const children = [leftEl, rightEl];
 
   if (adData.headlineText) {
     children.push(T.headline);
