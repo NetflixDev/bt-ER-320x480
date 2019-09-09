@@ -40,7 +40,7 @@ function formatTextElToBrandingLockup(
 
 export function sideBySideBrandingLockup(
   T,
-  { ctaLogoOffset, headlineFontSize, headlineLockupOffset, brandingLockupAlign }
+  { ctaLogoOffset, tuneInFontSize, tuneInLockupOffset, brandingLockupAlign }
 ) {
   // cta
   T.cta.resize();
@@ -61,16 +61,23 @@ export function sideBySideBrandingLockup(
     children: [T.cta, T.netflixLogo]
   });
 
-  // add headline to lockup if exists
-  if (adData.headlineText) {
+  // add tune-in/ftm to lockup if exists
+  if (adData.hasTuneIn || adData.hasFTM) {
     const children = [T.brandingLockup];
+    const textEl = adData.hasTuneIn ? T.tuneIn : T.ftm;
 
-    formatTextElToBrandingLockup(T.headline, T.brandingLockup, {
-      textFontSize: headlineFontSize,
-      textLockupOffset: headlineLockupOffset
+    if (adData.hasTuneIn) {
+      T.removeChild(T.ftm);
+    } else {
+      T.removeChild(T.tuneIn);
+    }
+
+    formatTextElToBrandingLockup(textEl, T.brandingLockup, {
+      textFontSize: adData.hasTuneIn ? tuneInFontSize : tuneInFontSize - 2,
+      textLockupOffset: tuneInLockupOffset
     });
 
-    children.push(T.headline);
+    children.push(textEl);
 
     T.brandingLockup = new UIGroup({
       target: T,
@@ -90,7 +97,7 @@ export function stackedBrandingLockup(
     brandingLockupElemXAlign,
     // Align value for entire branding lockup
     brandingLockupAlign,
-    headlineFontSize
+    tuneInFontSize
   }
 ) {
   // positioning CTA atop logo
@@ -113,14 +120,22 @@ export function stackedBrandingLockup(
   // lockup to position branding elems together
   const children = [T.cta, T.netflixLogo];
 
-  if (adData.headlineText) {
-    formatTextElToBrandingLockup(T.headline, T.cta, {
+  if (adData.hasTuneIn || adData.hasFTM) {
+    const textEl = adData.hasTuneIn ? T.tuneIn : T.ftm;
+
+    if (adData.hasTuneIn) {
+      T.removeChild(T.ftm);
+    } else {
+      T.removeChild(T.tuneIn);
+    }
+
+    formatTextElToBrandingLockup(textEl, T.cta, {
       textAlign,
-      textFontSize: headlineFontSize,
+      textFontSize: adData.hasTuneIn ? tuneInFontSize : tuneInFontSize - 2,
       textLockupOffset: brandingLockupOffset - 4
     });
 
-    children.push(T.headline);
+    children.push(textEl);
   }
 
   T.brandingLockup = new UIGroup({
