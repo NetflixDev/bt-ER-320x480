@@ -93,7 +93,7 @@ export default function verticalOneLine({
     y: Align.CENTER
   });
 
-  const children = [T.netflixLogo, T.cta];
+  const children = [leftEl, rightEl];
 
   if (adData.hasFTM) {
     children.push(T.ftm);
